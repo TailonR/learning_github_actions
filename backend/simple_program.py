@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask, jsonify
 
-app = Flask(__name__, static_folder='../frontend/public')
+app = Flask(__name__, static_folder="../frontend/public")
 
 
 @app.route("/hello")
