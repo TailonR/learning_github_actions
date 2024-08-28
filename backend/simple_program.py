@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-from flask import Flask
+from flask import Flask, jsonify
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/public')
 
 
-@app.route("/")
+@app.route("/hello")
 def hello_world():
-    return "Hello, I know a little more now!"
+    return jsonify({'data': "Hello, I know a little more now!\n"})
 
 
 if __name__ == "__main__":
