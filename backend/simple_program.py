@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 from flask import Flask, jsonify
+from flask_cors import CORS
 
-app = Flask(__name__, static_folder="../frontend/public")
+app = Flask(__name__, static_folder="build")
+CORS(app)
 
 
 @app.route("/hello")
