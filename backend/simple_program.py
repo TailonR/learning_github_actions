@@ -11,7 +11,7 @@ allowlist = [f"{app.static_folder}/", f"{app.static_folder}/index.html"]
 
 @app.route("/hello")
 def hello_world():
-    return jsonify({"data": "Hello, I know a little more now!\n"})
+    return jsonify({"data": "Hello, I know a less more now!\n"})
 
 
 @app.route("/", defaults={"path": ""})
