@@ -1,4 +1,4 @@
-name: Manual Action
+name: Build the React App
 
 on: workflow_dispatch
 
