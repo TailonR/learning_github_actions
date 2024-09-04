@@ -19,7 +19,8 @@ def serve(path):
     safe_path = os.path.normpath(path)
 
     full_path = os.path.join(app.static_folder, safe_path)
-    if os.path.commonpath([full_path, app.static_folder]) == os.path.abspath(app.static_folder):
+    common_path = os.path.commonpath([full_path, app.static_folder])
+    if common_path == os.path.abspath(app.static_folder):
         if safe_path != "." and os.path.exists(full_path):
             return send_from_directory(app.static_folder, safe_path)
     return send_from_directory(app.static_folder, "index.html")
