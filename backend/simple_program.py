@@ -6,14 +6,15 @@ import os
 app = Flask(__name__, static_folder="build")
 CORS(app)
 
-allowlist = [f'{app.static_folder}/', f'{app.static_folder}/index.html']
+allowlist = [f"{app.static_folder}/", f"{app.static_folder}/index.html"]
+
 
 @app.route("/hello")
 def hello_world():
     return jsonify({"data": "Hello, I know a little more now!\n"})
 
 
-@app.route("/", defaults={"path": ''})
+@app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def serve(path):
 
@@ -24,9 +25,10 @@ def serve(path):
             return send_from_directory(app.static_folder, "index.html")
     return send_from_directory(app.static_folder, "index.html")
 
+
 def is_allowed(path):
-    print(path)
     return path in allowlist
+
 
 if __name__ == "__main__":
     app.run()
