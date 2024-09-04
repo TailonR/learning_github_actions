@@ -15,6 +15,7 @@ def hello_world():
 @app.route("/", defaults={"path": ''})
 @app.route("/<path:path>")
 def serve(path):
+    # validate the path
     safe_path = os.path.normpath(path)
 
     full_path = os.path.join(app.static_folder, safe_path)
