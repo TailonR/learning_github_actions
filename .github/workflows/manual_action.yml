@@ -60,9 +60,9 @@ jobs:
       with: 
         python-version: 3.8
     
-    - name: Install Flask
+    - name: Install Dependencies
       run: |
-        pip install Flask
+        pip install -r ./backend/requirements.txt
   
     - name: Add executable permissions
       run: |
