@@ -44,6 +44,7 @@ jobs:
         path: ./backend
 
   run-job:
+    needs: build
     name: Run App
     runs-on: ubuntu-latest
 
@@ -53,6 +54,11 @@ jobs:
       with:
         name: app-build-files
         path: ./backend
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with: 
+        python-version: 3.8
   
     - name: Start Flask App
       run: |
