@@ -42,34 +42,3 @@ jobs:
       with:
         name: app-build-files
         path: ./backend
-
-  run-job:
-    needs: build
-    name: Run App
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Download Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: app-build-files
-        path: ./backend
-
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with: 
-        python-version: 3.8
-    
-    - name: Install Dependencies
-      run: |
-        pip install -r ./backend/requirements.txt
-  
-    - name: Add executable permissions
-      run: |
-        chmod +x ./backend/simple_program.py
-      
-    - name: Start Flask App
-      run: |
-        timeout 10s ./backend/simple_program.py || [ $? -eq 124 ] && exit 0 || exit $?
-
-
