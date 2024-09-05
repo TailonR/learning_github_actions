@@ -60,6 +60,10 @@ jobs:
       with: 
         python-version: 3.8
   
+    - name: Add executable permissions
+      run: |
+        chmod +x ./backend/simple_program.py
+      
     - name: Start Flask App
       run: |
         timeout 10s ./backend/simple_program.py
