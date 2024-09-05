@@ -3,7 +3,7 @@ from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 
-app = Flask(__name__, static_folder="build")
+app = Flask(__name__, static_folder="build", static_url_path="")
 CORS(app)
 
 allowlist = [f"{app.static_folder}/", f"{app.static_folder}/index.html"]
