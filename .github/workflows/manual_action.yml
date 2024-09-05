@@ -70,6 +70,6 @@ jobs:
       
     - name: Start Flask App
       run: |
-        timeout 10s ./backend/simple_program.py
+        timeout 10s ./backend/simple_program.py || [ $? -eq 124 ] && exit 0 || exit $?
 
 
