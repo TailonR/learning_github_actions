@@ -31,7 +31,31 @@ jobs:
         npm run build
       working-directory: ./frontend
       env:
-        PUBLIC_URL: /frontend/public
+        PUBLIC_URL: ./frontend/public
 
+    - name: Move Build
+      run: |
+        mv ./frontend/build ./backend/
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-build-files
+        path: ./backend
+
+  run-job:
+    name: Run App
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: app-build-files
+        path: ./backend
+  
+    - name: Start Flask App
+      run: |
+        timeout 10s ./backend/simple_program.py
 
 
