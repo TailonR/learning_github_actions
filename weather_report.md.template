@@ -1,0 +1,3 @@
+{{/*This the template that huantt/weather-forecast@v1.0.6 will use to place results in weather_report.md*/}}
+
+{{ template "hourly-table" $.TodayWeather.HourlyWeathers }}

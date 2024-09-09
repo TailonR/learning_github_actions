@@ -1,4 +1,1 @@
-<!-- This file is where bumb7ebee/weather-profile-actions will place it's results -->
-
-<!-- WEATHER:START -->
-<!-- WEATHER:END -->
+<!-- This file is where huantt/weather-forecast@v1.0.6 will place it's results -->
