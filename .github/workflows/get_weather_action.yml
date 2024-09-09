@@ -25,6 +25,6 @@ jobs:
           # Country code obtained from https://flagicons.lipis.dev/
           country-code: um
           # README.md file path
-          readme-path: ./weather_report.md
+          readme-path: weather_report.md
               
 
