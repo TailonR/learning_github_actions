@@ -26,3 +26,7 @@ jobs:
         template-file: weather_report.md.template
         # Output file path
         out-file: weather_report.md
+    - name: Show weather_report.md contents
+      run: cat weather_report.md
+    - name: Show weather_report.md.template contents
+      run: cat weather_report.md.template
