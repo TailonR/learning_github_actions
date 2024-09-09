@@ -17,7 +17,7 @@ jobs:
       uses: huantt/weather-forecast@v1.0.6
       with:
         # City
-        city: ${{ github.event.inputs.city-id }}
+        city: ${{ github.event.inputs.city }}
         weather-api-key: ${{ secrets.WEATHER_API_KEY }}
         # Template file path
         template-file: weather_report.md.template
