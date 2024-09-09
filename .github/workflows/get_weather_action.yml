@@ -1,0 +1,32 @@
+name: Get Weather Data
+
+on: 
+  workflow_dispatch:
+    inputs:
+      city:
+        required: true
+        description: Enter city name or zip code
+
+jobs:
+  weather-action:
+    name: Get Weather Data
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    
+    - name: Get Weather using Weather API
+      uses: huantt/weather-forecast@v1.0.6
+      with:
+        # City
+        city: ${{ github.event.inputs.city }}
+        weather-api-key: ${{ secrets.WEATHER_API_KEY }}
+        # Template file path
+        template-file: weather_report.md.template
+        # Output file path
+        out-file: weather_report.md
+    - name: Show weather_report.md contents
+      run: cat weather_report.md
+    - name: Show weather_report.md.template contents
+      run: cat weather_report.md.template

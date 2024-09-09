@@ -1,0 +1,1 @@
+<!-- This file is where huantt/weather-forecast@v1.0.6 will place it's results -->
