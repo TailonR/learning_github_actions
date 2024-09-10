@@ -26,7 +26,15 @@ jobs:
         template-file: weather_report.md.template
         # Output file path
         out-file: weather_report.md
-    - name: Show weather_report.md contents
-      run: cat weather_report.md
-    - name: Show weather_report.md.template contents
-      run: cat weather_report.md.template
+    - name: Commit
+      run: |
+          if git diff --exit-code; then
+            echo "No changes to commit."
+            exit 0
+          else
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add .
+            git commit -m "Updated weather report for $(date)"
+            git push origin main
+          fi
