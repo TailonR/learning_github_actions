@@ -26,8 +26,6 @@ jobs:
         template-file: weather_report.md.template
         # Output file path
         out-file: weather_report.md
-    - name: Echo branch
-      run: echo ${{ github.ref }}
     - name: Commit
       run: |
           if git diff --exit-code; then
@@ -38,5 +36,5 @@ jobs:
             git config user.email github-actions@github.com
             git add .
             git commit -m "Updated weather report for $(date)"
-            git push origin main
+            git push
           fi
