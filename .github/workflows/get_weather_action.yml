@@ -26,6 +26,8 @@ jobs:
         template-file: weather_report.md.template
         # Output file path
         out-file: weather_report.md
+    - name: Echo branch
+      run: echo ${{ github.ref }}
     - name: Commit
       run: |
           if git diff --exit-code; then
