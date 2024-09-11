@@ -1,5 +1,7 @@
 # dependencies
 /simple_flask_app/frontend/node_modules
+/multi_page_app/frontend/node_modules
 
 # production
 /simple_flask_app/frontend/build
+/multi_page_app/frontend/build
