@@ -17,12 +17,14 @@ def serve(path):
             return send_from_directory(app.static_folder, "index.html")
     return send_from_directory(app.static_folder, "index.html")
 
+
 def is_allowed(path):
     with open("backend/whitelist.txt", "r") as file:
         lines = file.read().splitlines()
         print(lines)
         print(path in lines)
         return path in lines
+
 
 if __name__ == "__main__":
     app.run()
