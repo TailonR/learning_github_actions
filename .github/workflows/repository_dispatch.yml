@@ -15,8 +15,10 @@ jobs:
 
         - name: Confirmation message
           if: ${{ !github.event.client_payload.status }}
+          env:
+            MESSAGE: ${{ github.event.client_payload.message }}
           run: |
-            echo ${{ github.event.client_payload.message }}
+            echo $MESSAGE
             echo "I think you are right!"
 
             
