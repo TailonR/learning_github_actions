@@ -1,0 +1,20 @@
+name: External Event Workflow
+
+on:
+    repository_dispatch: 
+        types: [testing]
+
+jobs:
+    respond:
+        name: Respond
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Confirmation message
+          run: |
+            echo "You are here"
+
+            
