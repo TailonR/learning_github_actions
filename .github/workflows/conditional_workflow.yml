@@ -16,7 +16,7 @@ jobs:
               if: github.ref == 'refs/heads/main'
 
             - name: Upload file
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: pushing_to_main_test
                 path: pushing_to_main_test.txt
@@ -29,7 +29,7 @@ jobs:
 
         steps:
             - name: Download file
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: pushing_to_main_test
 
