@@ -8,6 +8,9 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            - name: Create file
+              run: touch pushing_to_main_test.txt
+
             - name: If requesting main
               run: echo "You are pushing into main" > pushing_to_main_test.txt
               if: github.ref == 'refs/heads/main'
@@ -17,7 +20,6 @@ jobs:
               with:
                 name: pushing_to_main_test
                 path: pushing_to_main_test.txt
-              if: github.ref == 'refs/heads/main'
 
 
     Status:
@@ -33,7 +35,7 @@ jobs:
 
             - name: Determine success
               run: |
-                if [ -f "pushing_to_main_test.txt" ]; then
+                if [ $(stat -c%s "pushing_to_main_test.txt") -gt 0 ]; then
                     echo "We are pushing to pushing to the correct branch (main)"
                 else
                     echo "We are not pushing to the correct branch ${{ github.ref_name }}"
