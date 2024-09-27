@@ -40,3 +40,13 @@ jobs:
                 else
                     echo "We are not pushing to the correct branch ${{ github.ref_name }}"
                 fi
+
+    Cleanup:
+        name: Cleanup
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Remove artifact
+              uses: geekyeggo/delete-artifact@v5
+              with:
+                name: pushing_to_main_test
