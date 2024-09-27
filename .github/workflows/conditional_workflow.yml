@@ -1,0 +1,40 @@
+name: Conditional Workflow
+on:
+    push:
+
+jobs:
+    Main:
+        name: If Main
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: If requesting main
+              run: echo "You are pushing into main" > pushing_to_main_test.txt
+              if: github.ref == 'refs/heads/main'
+
+            - name: Upload file
+              uses: actions/upload-artifact@v3
+              with:
+                name: pushing_to_main_test
+                path: pushing_to_main_test.txt
+              if: github.ref == 'refs/heads/main'
+
+
+    Status:
+        name: Status
+        runs-on: ubuntu-latest
+        needs: Main
+
+        steps:
+            - name: Download file
+              uses: actions/download-artifact@v3
+              with:
+                name: pushing_to_main_test
+
+            - name: Determine success
+              run: |
+                if [ -f "pushing_to_main_test.txt" ]; then
+                    echo "We are pushing to pushing to the correct branch (main)"
+                else
+                    echo "We are not pushing to the correct branch ${{ github.ref_name }}"
+                fi
